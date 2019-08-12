@@ -1,44 +1,43 @@
-    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+   var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-    var wins = 0;
-    var losses = 0;
-    var guessesLeft = 10;
-    var guessesSofar = [];
+
+var wins = 0;
+var losses = 0;
+var guessesLeft = 10;
+var guessesSofar = [];
+
+// This function is run whenever the user presses a key.
+User Choice: <input type="text" id="userchoice" onkeyup="myFunction()">
+
+function myFunction() {
+  var userChoice = document.getElementById("userchoice");
+  var userChoice = event.key;
+
+  document.onkeyup = function (event) {
+    displayStats();
+}
 
 // Randomly chooses a choice from the options array. This is the Computer's guess.
 var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-//displays Guesses so far and guesses Left (**Not sure why i am getting an error afer "guessesLeft"**)
+//displays Guesses so far and guesses Left
 function countGuessesLeft() {
-	document.querySelector("#guessesLeft").innerHTML ="Guesses Left: " + guessesLeft;
+  document.getElementById("guessesLeft").innerHTML ="Guesses Left: " + guessesLeft;
 }
 function guessesSofar() {
-	document.querySelector("#guessesSofar").innerHTML = "Your Guesses so far: " + guessesSofar.join(' ');
+	document.getElementById("guessesSofar").innerHTML = "Your Guesses so far: " + guessesSofar;
 }
-countGuessesLeft();
-var restart = function() {
-	guessesLeft = 9;
-	letterUser = [];
-
-}
-    
-      //make letters lowercase
-      var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-    // This function is run whenever the user presses a key.
-      document.onkeyup = function (event) {
-        
-        // Determines which key was pressed.
-      va          wins++;
-          document.querySelector("#wins").innerHTML = "Wins: " + wins;
+   
+  
+         // This logic determines the outcome of the game (win/loss), and increments the appropriate number
+        if (userGuess === computerGuess){
+          wins++;
+          document.getElementById("wins").innerHTML = "Wins: " + wins;
           restart();
         } 
 
 	else if (guessesLeft === 0) {
 		losses++;
-		document.querySelector("#losses").innerHTML = "Losses: " + losses;
+		document.getElementById("losses").innerHTML = "Losses: " + losses;
 		restart();
-	};r userGuess = event.key;
-  
-         // This logic determines the outcome of the game (win/loss), and increments the appropriate number
-        if (userGuess === computerGuess){
+	}};
